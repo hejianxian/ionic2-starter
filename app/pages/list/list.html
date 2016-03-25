@@ -1,0 +1,26 @@
+<ion-navbar *navbar primary>
+  <ion-buttons start>
+    <button royal (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-buttons>
+  <ion-title>CNode</ion-title>
+  <ion-buttons end>
+    <button royal (click)="openModal()">
+      <ion-icon name="create-outline"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="list">
+  <ion-list>
+    <ion-item *ngFor="#t of topic" (click)="goDetail(t)">
+        <ion-avatar item-left>
+        <img src="{{t.author.avatar_url}}">
+        </ion-avatar>
+        <h2>{{t.author.loginname}}</h2>
+        <h3>{{t.title}}</h3>
+        <p>{{t.create_at}}</p>
+    </ion-item>
+   </ion-list>
+</ion-content>

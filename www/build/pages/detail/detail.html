@@ -1,0 +1,22 @@
+<ion-navbar *navbar primary>
+  <ion-title>{{detail.title}}</ion-title>
+  <ion-buttons end>
+    <button royal>
+      <ion-icon name="chatboxes-outline"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content padding class="detail">
+    <ion-list>
+        <ion-item>
+            <ion-thumbnail item-left>
+            <img *ngIf="detail.author" src="{{detail.author.avatar_url}}">
+            </ion-thumbnail>
+            <h2 *ngIf="detail.author">{{detail.author.loginname}}</h2>
+            <p>{{detail.create_at}}</p>
+            <button clear item-right>{{detail.visit_count}}</button>
+        </ion-item>
+    </ion-list>
+    <div class="topic-content" [innerHTML]="detail.content"></div>
+</ion-content>

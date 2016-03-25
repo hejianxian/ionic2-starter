@@ -19,4 +19,17 @@
         </ion-item>
     </ion-list>
     <div class="topic-content" [innerHTML]="detail.content"></div>
+    <ion-list *ngIf="detail.replies">
+        <ion-list-header>
+            评论
+        </ion-list-header>
+        <ion-item *ngFor="#rep of detail.replies">
+            <ion-avatar item-left>
+            <img src="{{rep.author.avatar_url}}">
+            </ion-avatar>
+            <h2>{{rep.author.loginname}}</h2>
+            <h3 [innerHTML]="rep.content"></h3>
+            <p>{{rep.create_at}}</p>
+        </ion-item>
+    </ion-list>
 </ion-content>

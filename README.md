@@ -1,24 +1,28 @@
 # ionic2-starter
+A sample ionic2 project.
 
-### 目录结构
+#### start
+```
+git clone https://github.com/Alex-fun/ionic2-starter
+cd ionic2-starter
+npm i
+```
+
+#### run
+```
+ionic serve
+```
+
+#### app目录结构
 ```
 |____app.html
 |____app.ts
 |____pages
-| |____detail
-| | |____detail.html
-| | |____detail.scss
-| | |____detail.ts
-| |____list
-| | |____list.html
-| | |____list.scss
-| | |____list.ts
+| |____page1
+| | |____page1.html
+| | |____page1.scss
+| | |____page1.ts
 |____services
-| |____topics.ts
+| |____service.ts
 |____theme
-| |____app.core.scss
-| |____app.ios.scss
-| |____app.md.scss
-| |____app.variables.scss
-| |____app.wp.scss
 ```

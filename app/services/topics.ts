@@ -3,13 +3,13 @@ import { Http } from 'angular2/http';
 import 'rxjs/add/operator/map';
 
 export class TopicService {
-    
+    http: any
     constructor(@Inject(Http) http: Http) {
         this.http = http
     }   
  
-    getTopics () {
-        var url = 'https://cnodejs.org/api/v1/topics?page=0&limit=10&tab=good';
+    getTopics (page = 1) {
+        var url = 'https://cnodejs.org/api/v1/topics?page=' + page + '&limit=10&tab=good';
         return this.http.get(url).map(res => res.json());
     }
     

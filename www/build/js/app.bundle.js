@@ -63652,12 +63652,31 @@
 	        this.menu = menu;
 	        this.topic = null;
 	        this.topicService = topicService;
+	        this.page = 2;
 	    }
 	    ListPage.prototype.onPageWillEnter = function () {
 	        var _this = this;
-	        this.topicService.getTopics().subscribe(function (data) {
-	            _this.topic = data.data;
-	            console.log(data);
+	        this.getTopics(1, function (data) {
+	            _this.topic = data;
+	        });
+	    };
+	    ListPage.prototype.doRefresh = function (refresher) {
+	        var _this = this;
+	        this.getTopics(1, function (data) {
+	            _this.topic = data;
+	            refresher.complete();
+	        });
+	    };
+	    ListPage.prototype.doInfinite = function (infiniteScroll) {
+	        var _this = this;
+	        this.getTopics(this.page++, function (data) {
+	            Array.prototype.push.apply(_this.topic, data);
+	            infiniteScroll.complete();
+	        });
+	    };
+	    ListPage.prototype.getTopics = function (page, cb) {
+	        this.topicService.getTopics(page).subscribe(function (data) {
+	            cb && cb(data.data);
 	        }, function (err) { console.log(err); });
 	    };
 	    ListPage.prototype.goDetail = function (item) {
@@ -63708,8 +63727,9 @@
 	    function TopicService(http) {
 	        this.http = http;
 	    }
-	    TopicService.prototype.getTopics = function () {
-	        var url = 'https://cnodejs.org/api/v1/topics?page=0&limit=10&tab=good';
+	    TopicService.prototype.getTopics = function (page) {
+	        if (page === void 0) { page = 1; }
+	        var url = 'https://cnodejs.org/api/v1/topics?page=' + page + '&limit=10&tab=good';
 	        return this.http.get(url).map(function (res) { return res.json(); });
 	    };
 	    TopicService.prototype.getDetailByID = function (id) {

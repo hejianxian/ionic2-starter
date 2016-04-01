@@ -12,6 +12,7 @@ export class ListPage {
   topicService: any;
   nav: any;
   menu: any;
+  page: number;
   constructor(
       topicService: TopicService,
       nav: NavController,
@@ -20,13 +21,33 @@ export class ListPage {
         this.menu = menu;
         this.topic = null;
         this.topicService = topicService;
+        this.page = 2;
   }
   
   onPageWillEnter () {
-      this.topicService.getTopics().subscribe(
+        this.getTopics(1 ,(data) => {
+            this.topic = data;
+        });
+  }
+  
+  doRefresh (refresher) {
+        this.getTopics(1 ,(data) => {
+            this.topic = data;
+            refresher.complete();
+        });
+  }
+  
+  doInfinite (infiniteScroll) {
+        this.getTopics(this.page++ ,(data) => {
+            Array.prototype.push.apply(this.topic, data);
+            infiniteScroll.complete();
+        });
+  }
+  
+  getTopics (page: number, cb: any) {
+        this.topicService.getTopics(page).subscribe(
         data => {
-            this.topic = data.data;
-            console.log(data);
+            cb && cb(data.data);
         },
         err => {console.log(err)});
   }

@@ -13,14 +13,20 @@
 </ion-navbar>
 
 <ion-content class="list">
-  <ion-list>
-    <ion-item *ngFor="#t of topic" (click)="goDetail(t)">
-        <ion-avatar item-left>
-        <img src="{{t.author.avatar_url}}">
-        </ion-avatar>
-        <h2>{{t.author.loginname}}</h2>
-        <h3>{{t.title}}</h3>
-        <p>{{t.create_at}}</p>
-    </ion-item>
-   </ion-list>
+    <ion-refresher (refresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+        <ion-item *ngFor="#t of topic" (click)="goDetail(t)">
+            <ion-avatar item-left>
+            <img src="{{t.author.avatar_url}}">
+            </ion-avatar>
+            <h2>{{t.author.loginname}}</h2>
+            <h3>{{t.title}}</h3>
+            <p>{{t.create_at}}</p>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (infinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>

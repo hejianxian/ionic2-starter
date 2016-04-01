@@ -1,7 +1,7 @@
 # ionic2-starter
 A sample ionic2 project.
 
-<img src="https://dn-cnode.qbox.me/FpA5jex9jPVAHpTIUqVbMQdXEvmd" width="300" />
+<img src="https://dn-cnode.qbox.me/FpA5jex9jPVAHpTIUqVbMQdXEvmd" width="260" />
 
 #### start
 ```

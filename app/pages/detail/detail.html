@@ -8,7 +8,7 @@
 </ion-navbar>
 
 <ion-content padding class="detail">
-    <ion-list>
+    <ion-list *ngIf="detail.author">
         <ion-item>
             <ion-thumbnail item-left>
             <img *ngIf="detail.author" src="{{detail.author.avatar_url}}">

@@ -1,4 +1,4 @@
-import {Page, Modal, NavController, MenuController} from 'ionic-angular';
+import {Page, Modal, NavController, MenuController, ViewController} from 'ionic-angular';
 import {TopicService} from '../../services/topics';
 import {DetailPage} from '../detail/detail';
 
@@ -63,7 +63,26 @@ export class ListPage {
   }
   
   openModal() {
-      let pushModal = Modal.create(null);
-      this.nav.present(pushModal);
+      let modal = Modal.create(MyModal);
+      this.nav.present(modal)
   }
+}
+
+// modal 
+@Page({
+  template: `
+  <ion-content padding>
+    <h2>I'm a modal!</h2>
+    <button (click)="close()">Close</button>
+  </ion-content>`
+})
+class MyModal {
+    viewCtrl: any;
+    constructor(viewCtrl: ViewController) {
+        this.viewCtrl = viewCtrl;
+    }
+    
+    close() {
+        this.viewCtrl.dismiss();
+    }
 }

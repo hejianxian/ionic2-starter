@@ -63688,8 +63688,8 @@
 	        this.menu.open();
 	    };
 	    ListPage.prototype.openModal = function () {
-	        var pushModal = ionic_angular_1.Modal.create(null);
-	        this.nav.present(pushModal);
+	        var modal = ionic_angular_1.Modal.create(MyModal);
+	        this.nav.present(modal);
 	    };
 	    ListPage = __decorate([
 	        ionic_angular_1.Page({
@@ -63701,6 +63701,22 @@
 	    return ListPage;
 	}());
 	exports.ListPage = ListPage;
+	// modal 
+	var MyModal = (function () {
+	    function MyModal(viewCtrl) {
+	        this.viewCtrl = viewCtrl;
+	    }
+	    MyModal.prototype.close = function () {
+	        this.viewCtrl.dismiss();
+	    };
+	    MyModal = __decorate([
+	        ionic_angular_1.Page({
+	            template: "\n  <ion-content padding>\n    <h2>I'm a modal!</h2>\n    <button (click)=\"close()\">Close</button>\n  </ion-content>"
+	        }), 
+	        __metadata('design:paramtypes', [ionic_angular_1.ViewController])
+	    ], MyModal);
+	    return MyModal;
+	}());
 
 
 /***/ },

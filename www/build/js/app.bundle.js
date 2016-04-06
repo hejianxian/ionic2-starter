@@ -63670,7 +63670,8 @@
 	    ListPage.prototype.doInfinite = function (infiniteScroll) {
 	        var _this = this;
 	        this.getTopics(this.page++, function (data) {
-	            Array.prototype.push.apply(_this.topic, data);
+	            // Array.prototype.push.apply(this.topic, data);
+	            _this.topic = _this.topic.concat(data);
 	            infiniteScroll.complete();
 	        });
 	    };

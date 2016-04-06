@@ -39,7 +39,8 @@ export class ListPage {
   
   doInfinite (infiniteScroll) {
         this.getTopics(this.page++ ,(data) => {
-            Array.prototype.push.apply(this.topic, data);
+            // Array.prototype.push.apply(this.topic, data);
+            this.topic = this.topic.concat(data);
             infiniteScroll.complete();
         });
   }

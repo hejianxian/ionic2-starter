@@ -1,4 +1,3 @@
-
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {TopicService} from '../../services/topics';
 

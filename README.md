@@ -1,5 +1,5 @@
 # ionic2-starter
-A sample ionic2 project.
+An Ionic2 starter project
 
 <img src="https://dn-cnode.qbox.me/FpA5jex9jPVAHpTIUqVbMQdXEvmd" width="260" />
 
